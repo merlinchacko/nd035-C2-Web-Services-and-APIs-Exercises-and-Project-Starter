@@ -3,6 +3,8 @@ package com.udacity.pricing;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +31,13 @@ public class PricingServiceApplicationTests
     private TestRestTemplate restTemplate;
 
     @Test
-    public void getPriceTest()
+    public void getPriceByIdTest()
     {
 
-        ResponseEntity<Price> response =  this.restTemplate.getForEntity("http://localhost:" + port + "/services/price?vehicleId=1", Price.class);
+        ResponseEntity<Price> response =  this.restTemplate.getForEntity("http://localhost:" + port + "/prices/1", Price.class);
 
 		assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+		assertThat(response.getBody().getVehicleId(), equalTo(1L));
     }
 
 }
