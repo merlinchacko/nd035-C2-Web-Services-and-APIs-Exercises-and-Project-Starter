@@ -24,7 +24,7 @@ public class DataLoader implements ApplicationRunner
      */
     private static final List<Price> PRICES = LongStream
         .range(1, 20)
-        .mapToObj(i -> new Price(i, "USD", randomPrice(), i))
+        .mapToObj(i -> new Price("USD", randomPrice()))
         .collect(Collectors.toList());
 
     @Autowired
